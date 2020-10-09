@@ -8,12 +8,12 @@ CREATE_MOVIES_TABLE = """CREATE TABLE IF NOT EXISTS movies (
 );"""
 
 INSERT_MOVIES = "INSERT INTO movies (title, release_timestamp, watched) VALUES (?, ?, 0);"
-SELECT_ALL_MOVIES = "SELECT * FROM entries;"
+SELECT_ALL_MOVIES = "SELECT * FROM movies;"
 SELECT_UPCOMING_MOVIES = "SELECT * FROM movies WHERE release_timestamp > ?;"
 SELECT_WATCED_MOVIES = "SELECT * FROM movies WHERE watched = 1;"
 SET_MOVIES_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?;"
 
-connection = sqlite3.connnect("data.db")
+connection = sqlite3.connect("data.db")
 
 
 def create_table():
@@ -33,7 +33,7 @@ def get_movies(upcoming=False):
 			today_timestamp = datetime.datetime.today().timestamp()
 			cursor.execute(SELECT_UPCOMING_MOVIES, (today_timestamp,))
 		else:
-		cursor.execute(SELECT_ALL_MOVIES)
+			cursor.execute(SELECT_ALL_MOVIES)
 		return cursor.fetchall()
 	
 	
