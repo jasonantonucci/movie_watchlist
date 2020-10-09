@@ -7,11 +7,12 @@ CREATE_MOVIES_TABLE = """CREATE TABLE IF NOT EXISTS movies (
     watched INTEGER
 );"""
 
-INSERT_MOVIES = "INSERT INTO movies (title, release_timestamp, watched) VALUES (?, ?, 0);"
+INSERT_MOVIES = "INSERT INTO movies (title, release_timestamp) VALUES (?, ?);"
 SELECT_ALL_MOVIES = "SELECT * FROM movies;"
 SELECT_UPCOMING_MOVIES = "SELECT * FROM movies WHERE release_timestamp > ?;"
 SELECT_WATCED_MOVIES = "SELECT * FROM movies WHERE watched = 1;"
-SET_MOVIES_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?;"
+SET_MOVIE_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?;"
+DELETE_MOVIE = "DELETE FROM movies WHERE title = ?;"
 
 connection = sqlite3.connect("data.db")
 
