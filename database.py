@@ -20,7 +20,7 @@ SELECT_WATCHED_MOVIES = "SELECT * FROM watched WHERE watcher_name = ?;"
 INSERT_WATCHED_MOVIE = "INSERT INTO watched (watcher_name, title) VALUES (?, ?)"
 SET_MOVIE_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?;"
 
-
+g
 connection = sqlite3.connect("data.db")
 
 
